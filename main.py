@@ -34,7 +34,7 @@ def run():
         for vertexId, vertex in enumerate(selected_mesh_vertices):
             bind_position = cmds.xform('bind.' + vertex.split('.')[-1], q=1, t=1)
             vertex_position = cmds.xform(vertex, q=1, t=1)
-            frame_vertex_positions.extend([vertex_position[0] - bind_position[0], vertex_position[1] - bind_position[1], vertex_position[2] - bind_position[2]])
+            frame_vertex_positions.extend([a - b for a, b in zip(vertex_position, bind_position)])
 
         vertex_animation.extend(frame_vertex_positions)
 
